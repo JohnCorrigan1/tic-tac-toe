@@ -29,6 +29,9 @@ body {
 }
 
 .grid-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #C996CC;
     height: 15vh;
     border-radius: 10%;
