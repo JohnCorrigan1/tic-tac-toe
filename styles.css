@@ -2,13 +2,15 @@ body {
     margin: 0;
     display: grid;
     grid-template-columns: 1fr 3fr 1fr;
+    background-color: #3D2C8D;
 }
 
 .header {
-    background-color:aliceblue;
+    background-color: #916BBF;
     display: flex;
     justify-content: center;
     grid-column: 1/4;
+
 
 }
 
@@ -27,15 +29,22 @@ body {
 }
 
 .grid-item {
-    background-color:aliceblue;
+    background-color: #C996CC;
     height: 15vh;
     border-radius: 10%;
 
 }
 
-.restart {
+.restart-container {
     display: flex;
     justify-content: center;
-    background-color: aliceblue;
+    background-color: #3D2C8D;
     margin-top: 5vh;
+}
+
+.restart {
+    height: 5vh;
+    width: 10vw;
+    border-radius: 15%;
+    background-color: #C996CC;
 }
