@@ -1,0 +1,41 @@
+body {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+}
+
+.header {
+    background-color:aliceblue;
+    display: flex;
+    justify-content: center;
+    grid-column: 1/4;
+
+}
+
+.container {
+    grid-column: 2/3;
+}
+
+.game-board {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 10px;
+    grid-column: 2/3;
+    margin-top: 10vh;
+}
+
+.grid-item {
+    background-color:aliceblue;
+    height: 15vh;
+    border-radius: 10%;
+
+}
+
+.restart {
+    display: flex;
+    justify-content: center;
+    background-color: aliceblue;
+    margin-top: 5vh;
+}
