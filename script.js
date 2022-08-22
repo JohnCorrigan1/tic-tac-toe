@@ -32,7 +32,7 @@ let playerO = false;
 //listens for click on grid-item
 document.querySelectorAll('.grid-item').forEach(item => {
     item.addEventListener('click', function(){
-        let current = item.dataset.board;
+        let current = parseInt(item.dataset.board);
         if(playerX === true && item.textContent === ''){
             item.textContent = 'X';
             currentGame.push('X')
@@ -51,7 +51,37 @@ document.querySelectorAll('.grid-item').forEach(item => {
             playerX = true;
         }
 
-        
+        // winConditions.forEach((div) => {
+        //     if(playerxPicks.includes(div)){
+        //         console.log("x wins")
+        //     }
+        // })
+        // const winConditions = [
+        //     [0, 1, 2],
+        //     [3, 4, 5],
+        //     [6, 7, 8],
+        //     [0, 3, 6],
+        //     [1, 4, 7],
+        //     [2, 5, 8],
+        //     [0, 4, 8],
+        //     [2, 4, 6],
+        //   ];
+
+        for(i = 0; i < winConditions.length; i++){
+          if(  winConditions[i].every(possible => {
+            return playerxPicks.includes(possible)
+            })){
+                console.log("x wins")
+            }
+
+            if(  winConditions[i].every(possible => {
+                return playeroPicks.includes(possible)
+                })){
+                    console.log("o wins")
+                }
+            
+        }
+         
     })
 })
 
