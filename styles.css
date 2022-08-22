@@ -70,8 +70,8 @@ body {
 .restart {
     height: 8vh;
     width: 10vw;
-    min-width: fit-content;
-    border-radius: 15%;
+    min-width: 105px;
+    border-radius: 10%;
     background-color: #C996CC;
     box-shadow: 5px 5px 5px -2px #916BBF;
 }
