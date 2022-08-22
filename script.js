@@ -1,15 +1,3 @@
-const player = () => {
-
-
-
-}
-
-
-
-
-
-
-
 const gameBoard = (() => {
     const game = ['', '', '', '', '', '', '', '', ''];
        
@@ -20,98 +8,88 @@ const gameBoard = (() => {
             
         }
     }
+    
     return {setRender, game}
 })();
 //this clears board or intializes board on open
-gameBoard.setRender(gameBoard.game)
+// gameBoard.setRender(gameBoard.game)
 
 const gameController = (() => {
-
-let currentGame = [];
-let playerxPicks = [];
-let playeroPicks = [];
-let playerX = true;
-let playerO = false;
-let isOver = false;
-let head = document.getElementById('head');
-
+    gameBoard.setRender(gameBoard.game)
+    let currentGame = [];
+    let playerxPicks = [];
+    let playeroPicks = [];
+    let playerX = true;
+    let playerO = false;
+    let isOver = false;
+    let head = document.getElementById('head');
+    const gridItem = document.querySelectorAll('.grid-item')
+    const restartButton = document.querySelector('.restart')
 //listens for click on grid-item
-document.querySelectorAll('.grid-item').forEach(item => {
-    item.addEventListener('click', function(){
-        let current = parseInt(item.dataset.board);
-        if(playerX === true && item.textContent === '' && !isOver){
-            item.textContent = 'X';
-            currentGame.push('X')
-            playerxPicks.push(current)
-            //gameBoard.setRender(newGame)
-            playerX = false;
-            playerO = true;
-            head.innerText = "Player O's Turn"
-        }
-        
-        if(playerO === true && item.textContent === '' && !isOver){
-            item.textContent = 'O';
-            currentGame.push('O')
-            playeroPicks.push(current)
-            //gameBoard.setRender(newGame);
-            playerO = false;
-            playerX = true;
-            head.textContent = "Player X's Turn"
-        }
-
-        //checks for winner
-        for(i = 0; i < winConditions.length; i++){
-          if(  winConditions[i].every(possible => {
-            return playerxPicks.includes(possible)
-            })){
-                isOver = true;
-                head.textContent = "Player X Wins"
-                console.log("x wins")
+    gridItem.forEach(item => {
+        item.addEventListener('click', function(){
+            let current = parseInt(item.dataset.board);
+            if(playerX === true && item.textContent === '' && !isOver){
+                item.textContent = 'X';
+                currentGame.push('X')
+                playerxPicks.push(current)
+                playerX = false;
+                playerO = true;
+                head.innerText = "Player O's Turn"
+            }
+            
+            if(playerO === true && item.textContent === '' && !isOver){
+                item.textContent = 'O';
+                currentGame.push('O')
+                playeroPicks.push(current)
+                playerO = false;
+                playerX = true;
+                head.textContent = "Player X's Turn"
             }
 
+            //checks for winner
+            for(i = 0; i < winConditions.length; i++){
             if(  winConditions[i].every(possible => {
-                return playeroPicks.includes(possible)
+                return playerxPicks.includes(possible)
                 })){
                     isOver = true;
-                    head.textContent = "Player O Wins"
-                    console.log("o wins")
+                    head.textContent = "Player X Wins"
+                    console.log("x wins")
                 }
-        }
+
+                if(  winConditions[i].every(possible => {
+                    return playeroPicks.includes(possible)
+                    })){
+                        isOver = true;
+                        head.textContent = "Player O Wins"
+                        console.log("o wins")
+                    }
+            }
+        })
     })
-})
 
 
-document.querySelector('.restart').addEventListener('click', function(){
-    head.textContent = "Player X's Turn"
-    gameBoard.setRender(gameBoard.game);
-    currentGame = [];
-    playeroPicks = [];
-    playerxPicks = [];
-    playerX = true;
-    playerO = false;
-    isOver = false;
-});
+    restartButton.addEventListener('click', function(){
+        head.textContent = "Player X's Turn"
+        gameBoard.setRender(gameBoard.game);
+        currentGame = [];
+        playeroPicks = [];
+        playerxPicks = [];
+        playerX = true;
+        playerO = false;
+        isOver = false;
+    });
 
 
-const winConditions = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6],
-  ];
+    const winConditions = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6],
+    ];
 
 })();
-
-
-
-
-
-
-// gridItem.addEventlisener('click', function(){
-//     console.log("test")
-//     return
-// });
