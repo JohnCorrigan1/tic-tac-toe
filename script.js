@@ -1,5 +1,7 @@
 const player = () => {
 
+
+
 }
 
 
@@ -15,6 +17,7 @@ const gameBoard = (() => {
         for(i = 0; i < game.length; i++){
             let current = document.querySelector(`[data-board='${i}']`);
             current.textContent = game[i];
+            
         }
     }
     return {setRender, game}
@@ -22,78 +25,71 @@ const gameBoard = (() => {
 //this clears board or intializes board on open
 gameBoard.setRender(gameBoard.game)
 
+const gameController = (() => {
 
 let currentGame = [];
 let playerxPicks = [];
 let playeroPicks = [];
 let playerX = true;
 let playerO = false;
+let isOver = false;
+let head = document.getElementById('head');
 
 //listens for click on grid-item
 document.querySelectorAll('.grid-item').forEach(item => {
     item.addEventListener('click', function(){
         let current = parseInt(item.dataset.board);
-        if(playerX === true && item.textContent === ''){
+        if(playerX === true && item.textContent === '' && !isOver){
             item.textContent = 'X';
             currentGame.push('X')
             playerxPicks.push(current)
             //gameBoard.setRender(newGame)
             playerX = false;
             playerO = true;
+            head.innerText = "Player O's Turn"
         }
         
-        if(playerO === true && item.textContent === ''){
+        if(playerO === true && item.textContent === '' && !isOver){
             item.textContent = 'O';
             currentGame.push('O')
             playeroPicks.push(current)
             //gameBoard.setRender(newGame);
             playerO = false;
             playerX = true;
+            head.textContent = "Player X's Turn"
         }
 
-        // winConditions.forEach((div) => {
-        //     if(playerxPicks.includes(div)){
-        //         console.log("x wins")
-        //     }
-        // })
-        // const winConditions = [
-        //     [0, 1, 2],
-        //     [3, 4, 5],
-        //     [6, 7, 8],
-        //     [0, 3, 6],
-        //     [1, 4, 7],
-        //     [2, 5, 8],
-        //     [0, 4, 8],
-        //     [2, 4, 6],
-        //   ];
-
+        //checks for winner
         for(i = 0; i < winConditions.length; i++){
           if(  winConditions[i].every(possible => {
             return playerxPicks.includes(possible)
             })){
+                isOver = true;
+                head.textContent = "Player X Wins"
                 console.log("x wins")
             }
 
             if(  winConditions[i].every(possible => {
                 return playeroPicks.includes(possible)
                 })){
+                    isOver = true;
+                    head.textContent = "Player O Wins"
                     console.log("o wins")
                 }
-            
         }
-         
     })
 })
 
 
 document.querySelector('.restart').addEventListener('click', function(){
-    //clears board
+    head.textContent = "Player X's Turn"
     gameBoard.setRender(gameBoard.game);
     currentGame = [];
     playeroPicks = [];
     playerxPicks = [];
     playerX = true;
     playerO = false;
+    isOver = false;
 });
 
 
@@ -107,6 +103,8 @@ const winConditions = [
     [0, 4, 8],
     [2, 4, 6],
   ];
+
+})();
 
 
 
