@@ -1,7 +1,7 @@
 body {
     margin: 0;
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     background-color: #3D2C8D;
 }
 
@@ -10,18 +10,32 @@ body {
     display: flex;
     justify-content: center;
     grid-column: 1/4;
-
+    box-shadow: 5px 5px 5px -2px #C996CC;
 
 }
 
 .container {
+    height: 75vh;
     grid-column: 2/3;
 }
 
 .game-info {
     display: grid;
     text-align: center;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+#player-x {
+    grid-column: 1/2;
+}
+
+#player-o{
+    grid-column: 3/4;
+}
+
+.turn {
+    grid-column: 2/3;
 }
 
 .game-board {
@@ -31,7 +45,8 @@ body {
     grid-template-rows: 1fr 1fr 1fr;
     gap: 15px;
     grid-column: 2/3;
-    margin-top: 10vh;
+    margin-top: 5vh;
+    min-width: 400px;
 }
 
 .grid-item {
@@ -40,7 +55,7 @@ body {
     align-items: center;
     background-color: #C996CC;
     height: 15vh;
-   
+    font-size: xx-large;
     border-radius: 10%;
 
 }
@@ -49,12 +64,14 @@ body {
     display: flex;
     justify-content: center;
     background-color: #3D2C8D;
-    margin-top: 5vh;
+    margin-top: 3vh;
 }
 
 .restart {
-    height: 5vh;
+    height: 8vh;
     width: 10vw;
+    min-width: fit-content;
     border-radius: 15%;
     background-color: #C996CC;
+    box-shadow: 5px 5px 5px -2px #916BBF;
 }
