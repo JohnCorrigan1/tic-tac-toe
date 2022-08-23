@@ -45,11 +45,10 @@ body {
     height: 15vh;
     font-size: 60px;
     border-radius: 20px;
-    /* color:#3D2C8D; */
 }
 
 .grid-item:hover{
-    background-color: #916BBF;
+    background-color: #FBCAFF;
     box-shadow: 5px 5px 5px -2px #C996CC;
 }
 
