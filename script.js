@@ -5,10 +5,8 @@ const gameBoard = (() => {
         for(i = 0; i < game.length; i++){
             let current = document.querySelector(`[data-board='${i}']`);
             current.textContent = game[i];
-            
         }
     }
-    
     return {setRender, game}
 })();
 //this clears board or intializes board on open
@@ -36,6 +34,7 @@ const gameController = (() => {
                 playerX = false;
                 playerO = true;
                 head.innerText = "Player O's Turn"
+                item.style.color = 'green'
             }
             
             if(playerO === true && item.textContent === '' && !isOver){
@@ -45,6 +44,7 @@ const gameController = (() => {
                 playerO = false;
                 playerX = true;
                 head.textContent = "Player X's Turn"
+                item.style.color = 'red'
             }
 
             //checks for winner
@@ -54,7 +54,6 @@ const gameController = (() => {
                 })){
                     isOver = true;
                     head.textContent = "Player X Wins"
-                    console.log("x wins")
                 }
 
                 if(  winConditions[i].every(possible => {
@@ -62,7 +61,6 @@ const gameController = (() => {
                     })){
                         isOver = true;
                         head.textContent = "Player O Wins"
-                        console.log("o wins")
                     }
             }
         })

@@ -11,7 +11,8 @@ body {
     justify-content: center;
     grid-column: 1/4;
     box-shadow: 5px 5px 5px -2px #C996CC;
-
+    color:#3D2C8D;
+    font-size: larger;
 }
 
 .container {
@@ -21,18 +22,8 @@ body {
 
 .game-info {
     text-align: center;
-}
-
-#player-x {
-    grid-column: 1/2;
-}
-
-#player-o{
-    grid-column: 3/4;
-}
-
-.turn {
-    grid-column: 2/3;
+    color:#C996CC;
+    font-size: 30px;
 }
 
 .game-board {
@@ -43,7 +34,7 @@ body {
     gap: 15px;
     grid-column: 2/3;
     margin-top: 5vh;
-    min-width: 400px;
+    min-width: 350px;
 }
 
 .grid-item {
@@ -52,9 +43,14 @@ body {
     align-items: center;
     background-color: #C996CC;
     height: 15vh;
-    font-size: xx-large;
-    border-radius: 10%;
+    font-size: 60px;
+    border-radius: 20px;
+    /* color:#3D2C8D; */
+}
 
+.grid-item:hover{
+    background-color: #916BBF;
+    box-shadow: 5px 5px 5px -2px #C996CC;
 }
 
 .restart-container {
@@ -68,7 +64,7 @@ body {
     height: 8vh;
     width: 10vw;
     min-width: 105px;
-    border-radius: 10%;
+    border-radius: 20px;
     background-color: #C996CC;
     box-shadow: 5px 5px 5px -2px #916BBF;
 }
@@ -88,7 +84,6 @@ footer {
 
 .github-logo:hover{
     animation: roll 3s;
-    
     transform: rotate(720deg) ;
 }
 
@@ -96,9 +91,7 @@ footer {
     0% {
         transform: rotate(0);
     }
-
     100% {
         transform: rotate(720deg)
     }
-    
 }
