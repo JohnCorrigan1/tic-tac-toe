@@ -20,10 +20,7 @@ body {
 }
 
 .game-info {
-    
     text-align: center;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
 }
 
 #player-x {
@@ -74,4 +71,34 @@ body {
     border-radius: 10%;
     background-color: #C996CC;
     box-shadow: 5px 5px 5px -2px #916BBF;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 5px;
+    width: 100%;
+}
+
+.footer {
+    margin-right: 5px;
+}
+
+.github-logo:hover{
+    animation: roll 3s;
+    
+    transform: rotate(720deg) ;
+}
+
+@keyframes roll {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(720deg)
+    }
+    
 }
