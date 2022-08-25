@@ -62,6 +62,11 @@ const gameController = (() => {
                         isOver = true;
                         head.textContent = "Player O Wins"
                     }
+
+                if(playerxPicks.length == 5){
+                    isOver = true;
+                    head.textContent = "Tie Game"
+                }
             }
         })
     })
